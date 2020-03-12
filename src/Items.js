@@ -1,5 +1,19 @@
 import React, { useState, useEffect } from "react";
+import styled from "styled-components";
 import Item from "./Item";
+
+const LoadButton = styled.div`
+  width: 80%;
+  padding: 10px;
+  border: 2px solid black;
+  margin: 0px auto;
+
+  &:hover {
+    background-color: black;
+    color: white;
+    cursor: pointer;
+  }
+`;
 
 var Items = () => {
   const [items, setItems] = useState([]);
@@ -14,24 +28,22 @@ var Items = () => {
       });
   }, []);
 
-  window.onscroll = () => {
-    if (
-      window.innerHeight + document.documentElement.scrollTop ===
-      document.documentElement.offsetHeight
-    ) {
-      alert("scrolltop");
-      setPagecount({
-        ...pagecount,
-        end: pagecount.end + 10
-      });
-    }
-  };
-  // var loadItems = (offset, count) => {
-  //   return items
-  //     .slice(offset, count)
-  //     .map((a, key) => <Item posid={a} key={key} />);
+  // window.onscroll = () => {
+  //   if (
+  //     window.innerHeight + document.documentElement.scrollTop ===
+  //     document.documentElement.offsetHeight
+  //   ) {
+  //     alert("scrolltop");
+  //     setPagecount({
+  //       ...pagecount,
+  //       end: pagecount.end + 10
+  //     });
+  //   }
   // };
 
+  const loadItems = () => {
+    setPagecount({ ...pagecount, end: pagecount.end + 10 });
+  };
   return (
     <>
       <h1>HN</h1>
@@ -39,8 +51,7 @@ var Items = () => {
         <Item postid={a} key={a} />
       ))}
       <br />
-      <br />
-      <br />
+      <LoadButton onClick={loadItems}>Load More</LoadButton>
       <br />
       <br />
       <br />
