@@ -2,6 +2,14 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Item from "./Item";
 
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useParams
+} from "react-router-dom";
+
 const LoadButton = styled.div`
   width: 80%;
   padding: 10px;

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { MyLoader } from "./Myloader";
+import { ItemPageLoader } from "./Myloader";
 import {
   BrowserRouter as Router,
   Switch,
@@ -9,18 +9,11 @@ import {
   useParams
 } from "react-router-dom";
 
-var ItemStyled = styled.div`
-  width: 80%;
-  font-size: 0.8em;
-  color: white;
-  margin: 10px auto;
-  padding: 10px;
-  background-color: #3d3d3d;
-`;
-
-var Item = ({ postid, key }) => {
+const Itempage = () => {
+  let { postid } = useParams();
   const [content, setContent] = useState([]);
   const [loaded, setLoaded] = useState(false);
+
   useEffect(() => {
     fetch("https://hacker-news.firebaseio.com/v0/item/" + postid + ".json")
       .then(r => r.json())
@@ -30,20 +23,24 @@ var Item = ({ postid, key }) => {
         setLoaded(true);
       });
   }, [postid]);
+
   return (
     <>
-      {!loaded && <MyLoader />}
+      {!loaded && <ItemPageLoader />}
+
       {loaded && (
-        <ItemStyled>
-          <span>{content.score}</span>&nbsp;&nbsp;&nbsp;
-          <a href={content.url} target="_blank">
-            {content.title}
-          </a>
-          <Link to={`./${content.id}`}> Open</Link>
-        </ItemStyled>
+        <>
+          <h1>{content.title}</h1>
+          <h3>
+            {content.by} | {content.score}
+          </h3>
+          <h3>
+            <a href={content.url}>Link</a>
+          </h3>
+        </>
       )}
     </>
   );
 };
 
-export default Item;
+export default Itempage;
