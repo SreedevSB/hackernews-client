@@ -55,7 +55,7 @@ var Items = () => {
   return (
     <>
       <h1>HN</h1>
-      {items.slice(pagecount.start, pagecount.end).map((a, keyq) => (
+      {items.slice(pagecount.start, pagecount.end).map(a => (
         <Item postid={a} key={a} />
       ))}
       <br />
