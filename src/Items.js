@@ -2,14 +2,6 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Item from "./Item";
 
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useParams
-} from "react-router-dom";
-
 const LoadButton = styled.div`
   width: 70%;
   padding: 10px;
@@ -27,7 +19,7 @@ const LoadButton = styled.div`
 var Items = () => {
   const [items, setItems] = useState([]);
   const [pagecount, setPagecount] = useState({ start: 0, end: 10 });
-  const [scrolled, setScrolled] = useState(0);
+  //const [scrolled, setScrolled] = useState(0);
   useEffect(() => {
     fetch("https://hacker-news.firebaseio.com/v0/topstories.json")
       .then(r => r.json())

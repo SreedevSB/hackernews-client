@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled, { css } from "styled-components";
-import ContentLoader from "react-content-loader";
-import { MyLoader, ItemPageLoader } from "./Myloader";
+import { MyLoader } from "./Myloader";
 
 const CommentStyled = styled.div`
   width: 70%;
