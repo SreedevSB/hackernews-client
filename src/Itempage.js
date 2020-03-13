@@ -34,8 +34,6 @@ const Itempage = () => {
               Link
             </a>
           </h3>
-          <h3 />
-
           {content.kids &&
             content.kids.map((a, key) => <Comment commentid={a} />)}
         </>
