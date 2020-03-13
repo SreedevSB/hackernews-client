@@ -3,13 +3,7 @@ import Items from "./Items";
 import ItemPage from "./Itempage";
 
 import "./styles.css";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useParams
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 export default function App() {
   return (

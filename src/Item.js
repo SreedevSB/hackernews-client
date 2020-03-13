@@ -1,21 +1,17 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { MyLoader } from "./Myloader";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useParams
-} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 var ItemStyled = styled.div`
-  width: 80%;
-  font-size: 0.8em;
-  color: white;
+  width: 70%;
+  font-size: 1.1em;
+  text-align: left;
+  color: #565656;
   margin: 10px auto;
   padding: 10px;
-  background-color: #3d3d3d;
+  background-color: white;
+  border-radius: 5px;
 `;
 
 var Item = ({ postid, key }) => {
@@ -36,10 +32,22 @@ var Item = ({ postid, key }) => {
       {loaded && (
         <ItemStyled>
           <span>{content.score}</span>&nbsp;&nbsp;&nbsp;
-          <a href={content.url} target="_blank">
-            {content.title}
+          <a href={content.url} style={{ color: "Black" }} target="_blank">
+            {content.title} | {content.type}
           </a>
-          <Link to={`./${content.id}`}> Open</Link>
+          <Link to={`./${content.id}`}>
+            <span
+              style={{
+                float: "right",
+                backgroundColor: "#7052fc",
+                padding: "2px 10px",
+                color: "white",
+                borderRadius: "5px"
+              }}
+            >
+              Open
+            </span>
+          </Link>
         </ItemStyled>
       )}
     </>

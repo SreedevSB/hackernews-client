@@ -11,10 +11,11 @@ import {
 } from "react-router-dom";
 
 const LoadButton = styled.div`
-  width: 80%;
+  width: 70%;
   padding: 10px;
   border: 2px solid black;
   margin: 0px auto;
+  border-radius: 5px;
 
   &:hover {
     background-color: black;

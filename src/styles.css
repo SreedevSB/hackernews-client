@@ -6,6 +6,9 @@ body {
   padding: 0px;
 }
 
+body {
+  background-color: #d3d4ea;
+}
 * {
   box-sizing: border-box;
 }

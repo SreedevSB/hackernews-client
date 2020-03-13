@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { ItemPageLoader } from "./Myloader";
+import Comment from "./Comment";
 import {
   BrowserRouter as Router,
   Switch,
@@ -13,7 +14,6 @@ const Itempage = () => {
   let { postid } = useParams();
   const [content, setContent] = useState([]);
   const [loaded, setLoaded] = useState(false);
-
   useEffect(() => {
     fetch("https://hacker-news.firebaseio.com/v0/item/" + postid + ".json")
       .then(r => r.json())
@@ -30,13 +30,20 @@ const Itempage = () => {
 
       {loaded && (
         <>
-          <h1>{content.title}</h1>
+          <h1 style={{ marginTop: "100px", padding: "20px" }}>
+            {content.title}
+          </h1>
           <h3>
-            {content.by} | {content.score}
+            {content.by} | {content.score} | {content.type} | &nbsp;
+            <a href={content.url} style={{ color: "blue" }}>
+              Link
+            </a>
           </h3>
-          <h3>
-            <a href={content.url}>Link</a>
-          </h3>
+          <h3 />
+
+          {content.kids.map((a, key) => (
+            <Comment commentid={a} />
+          ))}
         </>
       )}
     </>
