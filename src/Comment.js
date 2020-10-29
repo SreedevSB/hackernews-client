@@ -33,7 +33,7 @@ const Comment = ({ commentid, level = 0 }) => {
       {!comment && <MyLoader />}
       {comment && (
         <CommentStyled level={level}>
-          <span dangerouslySetInnerHTML={{ __html: DOMpurify.sanitize(comment.text) }} />
+          <span dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(comment.text) }} />
           &nbsp;| &nbsp;
           <span
             style={{
