@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled, { css } from "styled-components";
 import { MyLoader } from "./Myloader";
+import DOMPurify from 'dompurify';
 
 const CommentStyled = styled.div`
   width: 70%;
@@ -32,7 +33,7 @@ const Comment = ({ commentid, level = 0 }) => {
       {!comment && <MyLoader />}
       {comment && (
         <CommentStyled level={level}>
-          <span dangerouslySetInnerHTML={{ __html: comment.text }} />
+          <span dangerouslySetInnerHTML={{ __html: DOMpurify.sanitize(comment.text) }} />
           &nbsp;| &nbsp;
           <span
             style={{
